@@ -1,0 +1,27 @@
+---
+
+# 1. Cette tâche permets d'installer iptables-persistent à l'aide du module apt
+- name: "iptables-persistent installation"
+  apt:
+    name: "iptables-persistent"
+    state: "present"
+
+# 2. Cette tâche active le service iptables
+- name: "iptables service activation"
+  systemd:
+    name: "netfilter-persistent"
+    state: "started"
+    enabled: "yes"
+
+# 3. Ajout du fichier de configuration
+- name: "copie du fichier rules.v4 vers le répertoire /etc/iptables"
+  copy:
+    src: /home/user-ansible/.ansible/roles/iptables/tasks/rules.v4
+    dest: /etc/iptables/rules.v4
+    owner: root
+    mode: '0644'
+
+# 4. Autorisation ip_forward pour accès internet
+- name: "changement valeur sur ip_forward"
+  shell:
+    echo '1' >> /proc/sys/net/ipv4/ip_forward

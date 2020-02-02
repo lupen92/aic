@@ -1,0 +1,6 @@
+---
+# Redémarrage du service apache
+- name: "apache restart"
+  service:
+     name: "apache2"
+     state: "restarted"

@@ -1,0 +1,30 @@
+---
+
+# 1. Cette tâche permets d'installer iptables-persistent à l'aide du module apt
+- name: "isc-dhcp-server installation"
+  apt:
+    name: "isc-dhcp-server"
+    state: "present"
+
+# 2. Ajout du fichier de configuration
+- name: "copie du fichier dhcpd.conf vers le répertoire /etc/dhcp"
+  copy:
+    src: /home/user-ansible/.ansible/roles/dhcp-server/tasks/dhcpd.conf
+    dest: /etc/dhcp/dhcpd.conf
+    owner: root
+    mode: '0644'
+
+# 3. Ajout du fichier de configuration
+- name: "copie du fichier isc-dhcp-server vers le répertoire /etc/default"
+  copy:
+    src: /home/user-ansible/.ansible/roles/dhcp-server/tasks/isc-dhcp-server
+    dest: /etc/default/isc-dhcp-server
+    owner: root
+    mode: '0644'
+
+# 4. Cette tâche active le service iptables
+- name: "isc-dhcp-server service activation"
+  systemd:
+    name: "isc-dhcp-server"
+    state: "started"
+    enabled: "yes"
