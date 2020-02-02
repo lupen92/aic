@@ -1,0 +1,21 @@
+---
+- name: "Installation apache"
+  hosts: node-routeur
+  roles:
+    - role: "apache"
+      php_install: "yes"
+
+- name: "Installation Iptables"
+  hosts: node-routeur
+  roles:
+    - role: "iptables"
+
+- name: "Installation postfix"
+  hosts: node-routeur
+  roles:
+   - role: "postfix"
+
+- name: "Installation isc-dhcp-server"
+  hosts: node-routeur
+  roles:
+   - role: "dhcp-server"
