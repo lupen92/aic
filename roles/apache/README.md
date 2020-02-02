@@ -1,38 +1,38 @@
-Role Name
+Role Apache et PHP
 =========
 
-A brief description of the role goes here.
+Ce role permets d'installer le paquet Apache et PHP, nécessaires pour monter un serveur Web
 
-Requirements
+
+Prérequis
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Aucun prérequis est demandé sur le serveur lui-même avant l'installation de ces deux paquets (les sources de Debian 9 sont à jour dès son installation)
 
-Role Variables
---------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
-
-Example Playbook
+Contenu du main.yml
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Le fichier main.yml contient les lignes ci-dessous :
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+Etape 1 : Cette tâche permets d'installer Apache à l'aide du module apt
 
-License
--------
+     - name: "apache installation"
+       apt:
+         name: "apache2"
+         state: "present"
 
-BSD
+Etape 2 : Cette tâche active le service apache2
 
-Author Information
-------------------
+      - name: "apache service activation"
+        service:
+           name: "apache2"
+           state: "started"
+           enabled: "yes"
+           
+Etape 3 : Cette tâche fait appel à un autre fichier de conf pour installer php7
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+      - name: "install php7"
+        apt:
+           name: "php"
+           state: latest
