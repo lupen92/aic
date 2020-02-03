@@ -15,6 +15,8 @@ Le répertoire actuel contient le contenu ci-dessous:
 - Répertoire Roles, contenant les rôles qui seront déployé dans notre scenario.
 - Le fichier inventaire.ini, contenant le nom du routeur qui va recevoir ces rôles.
 - Le fichier install-roles.yml permettant d'appeler les fichiers yml dans le répertoire rôle et pouvoir les déployer.
+Le lancement de ces rôles se fait via la commande ansible-playbook, comme indiqué ci-dessous:
+ansible-playbook -i inventaire.ini --user user-ansible --become --ask-become-pass install-roles.yml
 
 # Le fichier install-roles.yml est présenté comme ci-dessous :
 
