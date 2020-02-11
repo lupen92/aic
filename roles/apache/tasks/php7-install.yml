@@ -1,7 +1,0 @@
----
-
-# 1. Cette tâche permets l'installation de PHP7
-- name: "install PHP7"
-  apt:
-    name: "php"
-    state: latest
