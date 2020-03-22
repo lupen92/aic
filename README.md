@@ -14,9 +14,34 @@ Ce scénario est réalisé sur un réseau dédié dans GNS3
 Le répertoire actuel contient le contenu ci-dessous:
 - Répertoire Roles, contenant les rôles qui seront déployé dans notre scenario.
 - Le fichier inventaire.ini, contenant le nom du routeur qui va recevoir ces rôles.
-- Le fichier install-roles.yml permettant d'appeler les fichiers yml dans le répertoire rôle et pouvoir les déployer.
-Le lancement de ces rôles se fait via la commande ansible-playbook, comme indiqué ci-dessous:
-ansible-playbook -i inventaire.ini --user user-ansible --become --ask-become-pass install-roles.yml
+- Le fichier fabfile.py est un script en python (framework fabric) permettant d'appeler la commande pour lancer le playbook, ce qui permets un lancement facile et rapide.
+- Le fichier install-roles.yml (qui est appelé par fab) permet d'appeler les fichiers yml dans le répertoire rôle et pouvoir les déployer.
+Le lancement de ces rôles se fait via la commande fab , comme indiqué ci-dessous:
+fab install-roles
+
+Le fichier fabfile est présenté comme ci-dessous :
+
+## Import des librairies Python
+
+```python
+
+from fabric.api import cd, run, env, task, prefix
+```
+ 
+ ## Création des tâches (les modules qui seront appelés par fabric)
+
+```python
+
+@task
+def ping_client():
+    run('ping node-routeur')
+
+@task
+def run_playbook():
+    with cd('/home/user-ansible/ansible2.7.10/local/bin'):
+	with prefix('. ../bin/activate'):
+            run('ansible-playbook -i /home/user-ansible/.ansible/inventaire.ini --user user-ansible --become --ask-become-pass /home/user-ansible/.ansible/install-roles.yml')
+```
 
  Le fichier install-roles.yml est présenté comme ci-dessous :
 
