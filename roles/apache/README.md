@@ -15,24 +15,32 @@ Contenu du main.yml
 
 Le fichier main.yml contient les lignes ci-dessous :
 
-Etape 1 : Cette tâche permets d'installer Apache à l'aide du module apt
+## Etape 1 : Cette tâche permets d'installer Apache à l'aide du module apt
 
+```yaml
      - name: "apache installation"
        apt:
          name: "apache2"
          state: "present"
+```
 
-Etape 2 : Cette tâche active le service apache2
+## Etape 2 : Cette tâche active le service apache2
+
+```yaml
 
       - name: "apache service activation"
         service:
            name: "apache2"
            state: "started"
            enabled: "yes"
+ ```
            
-Etape 3 : Cette tâche fait appel à un autre fichier de conf pour installer php7
+## Etape 3 : Cette tâche fait appel à un autre fichier de conf pour installer php7
+
+```yaml
 
       - name: "install php7"
         apt:
            name: "php"
            state: latest
+```
