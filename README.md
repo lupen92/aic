@@ -28,7 +28,7 @@ Le fichier fabfile est présenté comme ci-dessous :
 from fabric.api import cd, run, env, task, prefix
 ```
 
-## L'importation des modules from fabric.api est possible à condition que le framework soit installé avec la commande ci-dessous
+## L'importation des modules from fabric.api est possible à condition que le framework soit installé avec la commande ci-dessous (je mets également la commande pour installer pip, obligatoire pour installer les libraires python)
 
 ```bash
 
