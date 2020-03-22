@@ -35,7 +35,7 @@ Le fichier main.yml contient les lignes ci-dessous :
            enabled: "yes"
  ```
            
-## Etape 3 : Cette tâche fait appel à un autre fichier de conf pour installer php7
+## Etape 3 : Cette tâche installe la version 7 de PHP
 
 ```yaml
 
