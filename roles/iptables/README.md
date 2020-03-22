@@ -15,22 +15,30 @@ Contenu du main.yml
 
 Le fichier main.yml contient les lignes ci-dessous :
 
-Etape 1. Cette tâche permets d'installer iptables-persistent à l'aide du module apt
+## Etape 1. Cette tâche permets d'installer iptables-persistent à l'aide du module apt, ce qui permettra de sauvegarder les règles du pare-feu
+
+```yaml
 
        - name: "iptables-persistent installation"
          apt:
            name: "iptables-persistent"
            state: "present"
+```
 
-Etape 2. Cette tâche active le service iptables
+## Etape 2. Cette tâche active le service iptables
+
+```yaml
 
        - name: "iptables service activation"
          systemd:
            name: "netfilter-persistent"
            state: "started"
            enabled: "yes"
+```
 
-Etape 3. Ajout du fichier de configuration
+## Etape 3. Ajout du fichier de configuration
+
+```yaml
 
        - name: "copie du fichier rules.v4 vers le répertoire /etc/iptables"
          copy:
@@ -38,12 +46,16 @@ Etape 3. Ajout du fichier de configuration
            dest: /etc/iptables/rules.v4
            owner: root
            mode: '0644'
+```
 
-Etape 4. Autorisation ip_forward pour accès internet
+## Etape 4. Autorisation ip_forward pour accès internet
+
+```yaml
 
        - name: "changement valeur sur ip_forward"
          shell:
            echo '1' >> /proc/sys/net/ipv4/ip_forward
+```
            
 Le fichier rules.v4 contient des règles déjà faites sur des plusieurs interfaces afin d'isoler le réseau des services internes.
 Ce fichier est pratique lorsqu'on doit deployer des règles sur plusieurs routeurs via Ansible.
