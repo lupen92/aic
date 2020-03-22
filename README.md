@@ -27,6 +27,14 @@ Le fichier fabfile est présenté comme ci-dessous :
 
 from fabric.api import cd, run, env, task, prefix
 ```
+
+## L'importation des modules from fabric.api est possible à condition que le framework soit installé avec la commande ci-dessous
+
+```bash
+
+sudo apt-get install pip
+sudo pip install fabric3
+```
  
  ## Création des tâches (les modules qui seront appelés par fabric)
 
