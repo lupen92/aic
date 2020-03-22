@@ -35,24 +35,33 @@ ansible-playbook -i inventaire.ini --user user-ansible --become --ask-become-pas
 
 ## Etape 2 : Appeler le role iptables, permettant d'installer le paquet iptables-persistent afin de sauvegarder les règles ajoutées ou modifiées durant le travail
 
+```yaml
+
       - name: "Installation Iptables"
         hosts: node-routeur
         roles:
           - role: "iptables"
+```
 
 ## Etape 3 : Appeler le role postfix, permettant d'installer le paquet postifx afin d'envoyer des mails depuis notre routeur vers des destinataires externes ou internes
+
+```yaml
 
        - name: "Installation postfix"
          hosts: node-routeur
          roles:
            - role: "postfix"
+```
 
 ## Etape 4 : Appeler le role dhcp-serveur, permettant d'installer le paquet isc-dhcp-serveur sur notre routeur afin de distribuer des adresses IP aux nouveaux postes (PC, portables, téléphones, etc..) qui rejoignent le parc informatique
+
+```yaml
 
        - name: "Installation isc-dhcp-server"
          hosts: node-routeur
          roles:
            - role: "dhcp-server"
+```
 
 
 Avec ces roles, nous pouvons deployer la configuration d'un routeur sous Debian de façon automatique et très rapide.
