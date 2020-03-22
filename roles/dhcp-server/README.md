@@ -15,7 +15,7 @@ Contenu du main.yml
 
 Le fichier main.yml contient les lignes ci-dessous :
 
-## Etape 1. Cette tâche permets d'installer iptables-persistent à l'aide du module apt
+## Etape 1. Cette tâche permets d'installer le service ISC DHCP à l'aide du module apt
 
 ```yaml
  
@@ -25,7 +25,7 @@ Le fichier main.yml contient les lignes ci-dessous :
           state: "present"  
 ```
 
-## Etape 2. Ajout du fichier de configuration
+## Etape 2. Ajout du fichier de configuration contenant la configuration de chaque interface (range, passerelle, DNS, etc..)
 
 ```yaml
 
@@ -37,7 +37,7 @@ Le fichier main.yml contient les lignes ci-dessous :
           mode: '0644'
 ```
 
-## Etape 3. Ajout du fichier de configuration
+## Etape 3. Ajout du fichier de configuration contenant les interfaces qui seront utilisées pour déployer du DHCP
 
 ```yaml
 
