@@ -15,22 +15,30 @@ Contenu du main.yml
 
 Le fichier main.yml contient les lignes ci-dessous :
 
-Etape 1. Cette tâche permets d'installer postfix à l'aide du module apt
+## Etape 1. Cette tâche permets d'installer postfix à l'aide du module apt
+
+```yaml
 
      - name: "postfix installation"
        apt:
          name: "postfix"
          state: "present"
+```
 
-Etape 2. Cette tâche active le service postfix
+## Etape 2. Cette tâche active le service postfix
+
+```yaml
 
      - name: "postfix service activation"
        service:
          name: "postfix"
          state: "started"
          enabled: "yes"
+```
 
-Etape 3. Ajout du fichier de configuration
+## Etape 3. Ajout du fichier de configuration contenant le paramétrage SMTP du serveur
+
+```yaml
 
      - name: "copie du fichier main.cf vers le répertoire /etc/postfix"
        copy:
@@ -38,8 +46,11 @@ Etape 3. Ajout du fichier de configuration
          dest: /etc/postfix/main.cf
          owner: root
          mode: '0644'
+```
 
-Etape 4. Ajout du fichier de configuration
+## Etape 4. Ajout de la base de données contenant le mot de passe du compte utilisé en mode crypté
+
+```yaml
 
      - name: "copie du fichier sasl_pawwd vers le répertoire /etc/postfix"
        copy:
@@ -47,21 +58,9 @@ Etape 4. Ajout du fichier de configuration
          dest: /etc/postfix/sasl_passwd
          owner: root
          mode: '0644'
-
-Etape 5. Ajout du fichier de configuration
-
-     - name: "copie du fichier sasl_passwd.db vers le répertoire /etc/postfix"
-       copy:
-         src: /home/user-ansible/.ansible/roles/postfix/tasks/sasl_passwd.db
-         dest: /etc/postfix/sasl_passwd.db
-         owner: root
-         mode: '0644'
+```
 
 Le fichier main.cf contient la configuration du relay SMTP (dans mon cas, j'ai utilisé mon compte GMAIL) avec le serveur SMTP, son port et le protocole.
 Ce fichier permets d'avoir un role postfix déjà configuré suite à son déploiement sur le routeur
 
 Les fichier sasl_passwd et sasl_passwd.db contiennent le mot de passe du compte GMAIL en mode base de données qui est lu par postfix lors de l'envoi mail.
-
-
-
-
