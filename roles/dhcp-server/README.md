@@ -15,14 +15,19 @@ Contenu du main.yml
 
 Le fichier main.yml contient les lignes ci-dessous :
 
-Etape 1. Cette tâche permets d'installer iptables-persistent à l'aide du module apt
+## Etape 1. Cette tâche permets d'installer iptables-persistent à l'aide du module apt
+
+```yaml
  
       - name: "isc-dhcp-server installation"
         apt:
           name: "isc-dhcp-server"
-          state: "present"
+          state: "present"  
+```
 
-Etape 2. Ajout du fichier de configuration
+## Etape 2. Ajout du fichier de configuration
+
+```yaml
 
       - name: "copie du fichier dhcpd.conf vers le répertoire /etc/dhcp"
         copy:
@@ -30,8 +35,11 @@ Etape 2. Ajout du fichier de configuration
           dest: /etc/dhcp/dhcpd.conf
           owner: root
           mode: '0644'
+```
 
-Etape 3. Ajout du fichier de configuration
+## Etape 3. Ajout du fichier de configuration
+
+```yaml
 
        - name: "copie du fichier isc-dhcp-server vers le répertoire /etc/default"
          copy:
@@ -39,14 +47,18 @@ Etape 3. Ajout du fichier de configuration
            dest: /etc/default/isc-dhcp-server
            owner: root
            mode: '0644'
+```
 
-Etape 4. Cette tâche active le service dhcp
+## Etape 4. Cette tâche active le service dhcp
+
+```yaml
 
         - name: "isc-dhcp-server service activation"
           systemd:
             name: "isc-dhcp-server"
             state: "started"
             enabled: "yes"
+```
             
 Le fichier dhcpd.conf contient le paramétrage des réseaux pour les différents services internes.
 Ce paramétrage contient le pool d'adresses proposées, la passerelle, le DNS et le domaine de recherche.
