@@ -6,7 +6,7 @@ Scenario dans ce projet est le suivant :
 
 Une machine (serveur) sous Debian 9 Stretch sert de Node-Manager contenant les roles à déployer.
 
-Une machine (client) sous Debian 9 Stretch sert comme routeur et recoit via SSH les commandes du playbook (Apache, Postfix, IPTables, DHCP).
+Une machine (client) sous Debian 9 Stretch sert comme routeur et recoit via SSH les commandes du playbook (Apache, IPTables, DHCP).
 
 Ce scénario est réalisé sur un réseau dédié dans GNS3
 
