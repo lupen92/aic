@@ -41,7 +41,7 @@ Le fichier main.yml contient les lignes ci-dessous :
 ```yaml
 
        - name: "copie du fichier interfaces vers le répertoire /etc/network/interfaces"
-       copy:
+         copy:
          src: /home/user-ansible/.ansible/roles/iptables/tasks/interfaces
          dest: /etc/network/interfaces
          owner: root
