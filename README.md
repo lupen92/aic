@@ -76,17 +76,8 @@ def run_playbook():
           - role: "iptables"
 ```
 
-## Etape 3 : Appeler le role postfix, permettant d'installer le paquet postifx afin d'envoyer des mails depuis notre routeur vers des destinataires externes ou internes
 
-```yaml
-
-       - name: "Installation postfix"
-         hosts: node-routeur
-         roles:
-           - role: "postfix"
-```
-
-## Etape 4 : Appeler le role dhcp-serveur, permettant d'installer le paquet isc-dhcp-serveur sur notre routeur afin de distribuer des adresses IP aux nouveaux postes (PC, portables, téléphones, etc..) qui rejoignent le parc informatique
+## Etape 3 : Appeler le role dhcp-serveur, permettant d'installer le paquet isc-dhcp-serveur sur notre routeur afin de distribuer des adresses IP aux nouveaux postes (PC, portables, téléphones, etc..) qui rejoignent le parc informatique
 
 ```yaml
 
