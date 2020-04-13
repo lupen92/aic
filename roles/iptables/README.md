@@ -36,6 +36,19 @@ Le fichier main.yml contient les lignes ci-dessous :
            enabled: "yes"
 ```
 
+## Etape 3. Ajout du fichier interfaces pour configurer les cartes réseaux du routeur
+
+```yaml
+
+       - name: "copie du fichier interfaces vers le répertoire /etc/network/interfaces"
+       copy:
+         src: /home/user-ansible/.ansible/roles/iptables/tasks/interfaces
+         dest: /etc/network/interfaces
+         owner: root
+         mode: '0644'
+ 
+```
+
 ## Etape 3. Ajout du fichier de configuration
 
 ```yaml
