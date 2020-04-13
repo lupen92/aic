@@ -1,0 +1,38 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug enp0s3
+iface enp0s3 inet static
+        address 194.0.0.25/24
+        gateway 194.0.0.1
+        # dns-* options are implemented by the resolvconf package, if installed
+        dns-nameservers 8.8.8.8
+
+allow-hotplug enp0s8
+iface enp0s8 inet static
+        address 192.168.1.1
+        gateway 194.0.0.25
+        # dns-* options are implemented by the resolvconf package, if installed
+        dns-nameservers 8.8.8.8
+
+allow-hotplug enp0s9
+iface enp0s9 inet static
+        address 192.168.2.1/24
+        gateway 194.0.0.25
+        # dns-* options are implemented by the resolvconf package, if installed
+        dns-nameservers 8.8.8.8
+
+
+allow-hotplug enp0s10
+iface enp0s10 inet static
+        address 192.168.3.1/24
+        gateway 194.0.0.25
+        # dns-* options are implemented by the resolvconf package, if installed
+        dns-nameservers 8.8.8.8
