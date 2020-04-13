@@ -42,10 +42,10 @@ Le fichier main.yml contient les lignes ci-dessous :
 
        - name: "copie du fichier interfaces vers le répertoire /etc/network/interfaces"
          copy:
-         src: /home/user-ansible/.ansible/roles/iptables/tasks/interfaces
-         dest: /etc/network/interfaces
-         owner: root
-         mode: '0644'
+           src: /home/user-ansible/.ansible/roles/iptables/tasks/interfaces
+           dest: /etc/network/interfaces
+           owner: root
+           mode: '0644'
  
 ```
 
