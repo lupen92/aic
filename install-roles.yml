@@ -1,19 +1,20 @@
 ---
+# Installation du paquet apache sur le serveur node-routeur, utile pour héberger un site interne
+
 - name: "Installation apache"
   hosts: node-routeur
   roles:
     - role: "apache"
       php_install: "yes"
 
+# Installation du paquet iptables-persistent, utile pour nos règles pare-feu
+
 - name: "Installation Iptables"
   hosts: node-routeur
   roles:
     - role: "iptables"
 
-- name: "Installation postfix"
-  hosts: node-routeur
-  roles:
-   - role: "postfix"
+# Installation du paquet isc-dhcp-server, utile pour la mise en place du DHCP
 
 - name: "Installation isc-dhcp-server"
   hosts: node-routeur
